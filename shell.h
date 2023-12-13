@@ -13,21 +13,24 @@
 #include <limits.h>
 
 #define BUFSIZE 1024
-#define TOK_BUFSIZE 156
+#define TOK_BUFSIZE 128
 #define TOK_DELIM " \t\r\n\a"
 
-char *getenv(const char *name);
-int env(void);
+/* envrn1.c  */
+char *_getenv(const char *name);
+int _env(void);
 
+/* Points to an array of pointers to strings called the "environment" */
 extern char **environ;
 char **token(char *buffer);
 void free_arg(char **argv);
-void print_errors(char *shell_name, char *command_name, unsigned int pro_count);
-char *sh_path(char *filename);
-int strcmp(char *str_1, char *str_2, int n);
-char *strcpy(char *dest, char *src);
-void ex_sh_err(char *shell_name, char *command_name, unsigned int pro_count, char *arg);
-
+void errors(char *sh_name, char *command, unsigned int count);
+char *path(char *filename);
+int _strncmp(char *s1, char *s2, int n);
+char *_strcpy(char *dest, char *src);
+ssize_t get_line(char **lineptr, size_t *n, FILE *stream);
+void exit_err(char *sh_name, char *command, unsigned int count, char *arg);
+int exit_shell(char *arg);
 
 #endif
 
