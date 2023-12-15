@@ -33,4 +33,3 @@ void exit_err(char *sh_name, char *command, unsigned int count, char *arg);
 int exit_shell(char *arg);
 
 #endif
-
